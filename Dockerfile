@@ -16,7 +16,7 @@ WORKDIR $DockerHOME
 COPY . $DockerHOME
 
 # install dependencies  
-#RUN pip install --upgrade pip 
+RUN pip install --upgrade pip 
 
 # Install required Python packages
 #RUN pip install -r requirements.txt --default-timeout=100 future
