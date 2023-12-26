@@ -17,12 +17,13 @@ COPY . $DockerHOME
 
 # install dependencies  
 #RUN pip install --upgrade pip 
-RUN pip install --upgrade pip setuptools wheel
+#RUN pip install --upgrade pip setuptools wheel
+RUN pip install --no-cache-dir --upgrade -r /webapp/requirements.txt
 # Install required Python packages
 #RUN pip install -r requirements.txt --default-timeout=100 future
 
 # Instala los requerimientos
-RUN pip install -r requirements.txt
+#RUN pip install -r requirements.txt
 
 
 # Expose the port that Streamlit will run on
