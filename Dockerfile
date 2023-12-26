@@ -10,7 +10,7 @@ RUN mkdir -p $DockerHOME
 # where your code lives  
 WORKDIR $DockerHOME  
 
-#ENV ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true
+ENV ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true
 
 # Copy the rest of the application files to the container's working directory
 COPY . $DockerHOME

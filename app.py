@@ -54,9 +54,6 @@ def main():
 
     valores_numericos = [baños, cocheras, dormitorios, area_total]
     valores_numericos.extend([1 if valor else 0 for valor in valores_checkbox.values()])
-    
-    
-    print('valores_numericos',valores_numericos)
 
     
     # Verificar el estado del botón dinámicamente
