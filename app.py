@@ -13,7 +13,9 @@ with open("theme/template.css", "r") as file:
 # Aplicar el tema
 st.markdown(f"<style>{theme}</style>", unsafe_allow_html=True)
 
-
+@st.cache_data(show_spinner=False)
+def check_button_state(valores_numericos):
+    return all(valor == 0 for valor in valores_numericos)
 
 def render_input(data):
     return st.number_input(data)
@@ -38,6 +40,8 @@ def main():
     hall_ingreso = render_checkbox('Hall Ingreso')
     piscina = render_checkbox('Piscina')
     sauna = render_checkbox('Sauna')
+    
+    
    
 
     # Mapear valores booleanos a 0 o 1
@@ -54,25 +58,24 @@ def main():
     
     print('valores_numericos',valores_numericos)
 
-    prediction = ''
+    
+    # Verificar el estado del botón dinámicamente
+    enable_button = check_button_state(valores_numericos)        
         
-    if st.button('Resultado'):
-        prediction = np.round(model.predict([valores_numericos]), 2)[0] 
-
-    # Comprobar si prediction es un valor válido
-    if prediction is not None:
-        try:
+    if st.button('Resultado' , key="boton_resultado", disabled=enable_button):
+        
+        prediction = np.NaN
+    
+        if not enable_button:
+            
+            prediction = np.round(model.predict([valores_numericos]), 2)[0] 
+            
             # Formatear el resultado con formato de miles y símbolo de moneda
-            formatted_prediction = "${:,.2f}".format(float(prediction))
+            formatted_prediction = "S/.{:,.2f}".format(float(prediction))
 
             # Imprimir el resultado formateado
             st.success(formatted_prediction)
-        except ValueError:
-            st.error("")
-    else:
-        st.error("El valor de predicción es None o inválido.")
 
-       
 
 if __name__ == '__main__':
     main()

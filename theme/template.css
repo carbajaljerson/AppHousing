@@ -18,17 +18,19 @@ h2 {
     font-size: 2rem;
 }
 
-.stButton > button {
+.stButton > button,
+.stButton > button:active,
+.stButton > button:focus  {
     background-color: #3498db;
-    color: white;
+    color: white !important; /* Añadido !important para forzar la prioridad */
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }
 
 .stButton > button:hover {
-    background-color: white;
-    color: #3498db;
+    /* Eliminamos el cambio de color en hover */
+    color: white;
 }
 
 .stTextInput > div > div > input {
@@ -47,4 +49,7 @@ h2 {
     background-color: #2ecc71;
     color: white;
     border-radius: 5px;
+}
+.stButton > button:disabled {
+    color:  #B5B2B2 !important;
 }
