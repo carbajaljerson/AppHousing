@@ -30,30 +30,25 @@ def main():
     baños = render_input_entero('Número de Baños')
     cocheras = render_input_entero('Número de cocheras')
     dormitorios = render_input_entero('Número de dormitorios')
-    area_constr = render_input('Número de area_constr')
-    area_total = render_input('Número de area_total')
+    area_total = render_input('Área total (m2)')
 
     chimenea = render_checkbox('Chimenea')
     jacuzzi = render_checkbox('Jacuzzi')
     aire_acondicionado = render_checkbox('Aire Acondicionado')
-    area_deportiva = render_checkbox('Area Deportiva')
     hall_ingreso = render_checkbox('Hall Ingreso')
-    areas_verdes = render_checkbox('Áreas Verdes')
-    desague = render_checkbox('Desague')
     piscina = render_checkbox('Piscina')
     sauna = render_checkbox('Sauna')
-    area_bbq = render_checkbox('Área Bbq')
+   
 
     # Mapear valores booleanos a 0 o 1
     valores_checkbox = {
         'chimenea': chimenea, 'jacuzzi': jacuzzi,
         'aire_acondicionado': aire_acondicionado,
-        'area_deportiva': area_deportiva, 'hall_ingreso': hall_ingreso,
-        'areas_verdes': areas_verdes, 'desague': desague,
-        'piscina': piscina, 'sauna': sauna, 'area_bbq': area_bbq
+        'hall_ingreso': hall_ingreso,
+        'piscina': piscina, 'sauna': sauna
     }
 
-    valores_numericos = [baños, cocheras, dormitorios, area_constr, area_total]
+    valores_numericos = [baños, cocheras, dormitorios, area_total]
     valores_numericos.extend([1 if valor else 0 for valor in valores_checkbox.values()])
     
     
